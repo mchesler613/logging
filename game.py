@@ -21,7 +21,7 @@ class Game:
         self.name = name
         self.logger = Logger(name).logger
 
-    def do_something(self):
+    def run(self):
         answer = None
         while answer != 'q' and len(self.questions):
             # log random question
