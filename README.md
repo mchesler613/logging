@@ -1,6 +1,6 @@
 # Sample Logging Project
 
-The standard Python [logging](https://docs.python.org/3/library/logging.html) library is used widely to log various types of information in python programs for loging errors, debugging and displaying warning messages.
+The standard Python [logging](https://docs.python.org/3/library/logging.html) library is used widely to log various types of information in python programs for logging errors, debugging and displaying warning messages.
 
 This simple demo shows how I use this library, instead of reinventing the wheel, to log information from a running program in a file with a custom name, location, and format.
 
@@ -30,3 +30,45 @@ to manage dependencies and create a virtual environment.
 
 # Testing
 To run this program, type `python main.py` in the terminal.
+
+# Sample Output
+```py
+$ python main.py
+Type q to quit: Where do you work? kevala
+Type q to quit: What is your Zodiac sign? scorpio
+Type q to quit: Which day were you born? monday
+Type q to quit: What is your favorite season? spring
+Type q to quit: Where do you live? usa
+Type q to quit: Where do you go for vacation? israel
+Type q to quit: What is your favorite food? curry
+Type q to quit: How old are you? very old
+Type q to quit: What is your name? mc
+Type q to quit: What is your favorite sport? tennis
+No more questions...
+All done!
+```
+
+# Logged Output
+```bash
+$ cat busybody.log
+Type q to quit: Where do you work?
+kevala
+Type q to quit: What is your Zodiac sign?
+scorpio
+Type q to quit: Which day were you born?
+monday
+Type q to quit: What is your favorite season?
+spring
+Type q to quit: Where do you live?
+usa
+Type q to quit: Where do you go for vacation?
+israel
+Type q to quit: What is your favorite food?
+curry
+Type q to quit: How old are you?
+very old
+Type q to quit: What is your name?
+mc
+Type q to quit: What is your favorite sport?
+tennis
+```
