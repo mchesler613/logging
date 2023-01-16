@@ -4,6 +4,12 @@ from typing import List
 
 
 class TicTacToe:
+    """
+    This class is a representation of a 2-player TicTacToe game
+    between you and the computer.
+    An instance of this class logs selected information in a log file located
+    at 'logs/tictactoe.log'.
+    """
 
     quit_prompt = "Type q to quit"
     grid = [x for x in range(10)]
@@ -26,7 +32,7 @@ class TicTacToe:
             else self.markers[1]
         )
 
-    def display(self):
+    def display(self, message: str = None) -> None:
         rows = 3
         index = 1
         for row in range(1, rows + 1):
@@ -39,8 +45,15 @@ class TicTacToe:
             self.logger.info(row_values)
             index += 3
         self.logger.info("")
+        if message:
+            print(message)
+            self.logger.info(message)
 
     def run(self):
+        """
+        This method is called to start a game with the correct prompts
+        and display
+        """
         self.reset()
         answer = None
         instruction = "Enter a number:"
@@ -56,26 +69,32 @@ class TicTacToe:
             try:
                 index = int(answer)
             except ValueError:
+                # ignore non-number response
                 continue
 
-            # update grid with symbol
+            # evaluate player response
             if index in self.available_indices:
                 self.updated_grid[index] = self.player_symbol
+                # did the player win?
                 if self.three_in_a_row(index, self.player_symbol):
-                    self.display()
-                    print(self.you_win_msg)
-                    self.logger.info(self.you_win_msg)
+                    self.display(self.you_win_msg)
+                    # print(self.you_win_msg)
+                    # self.logger.info(self.you_win_msg)
                     break
                 self.available_indices.remove(index)
 
-                # game responds
+                # game responds accordingly based on the available positions
                 if self.available_indices:
+                    # the game picks a random available position and
+                    # updates the grid
                     game_index = random.choice(self.available_indices)
                     self.updated_grid[game_index] = self.game_symbol
+
+                    # did the computer win?
                     if self.three_in_a_row(game_index, self.game_symbol):
-                        self.display()
-                        print(self.i_win_msg)
-                        self.logger.info(self.i_win_msg)
+                        self.display(self.i_win_msg)
+                        # print(self.i_win_msg)
+                        # self.logger.info(self.i_win_msg)
                         break
                     self.available_indices.remove(game_index)
                 else:
@@ -88,8 +107,11 @@ class TicTacToe:
         symbol: str,
     ) -> bool:
         """
-        Does this position have two neighbors with same symbol?
+        This method evaluates if a 'symbol' at 'index' contributes to a winning
+        row by returning True or False
         """
+        # A list of pre-programmed evaluations based on position
+        # Does this position, index, have two neighbors with same symbol?
         evaluations = {
             1: (
                 True
@@ -122,6 +144,7 @@ class TicTacToe:
                 if (self.evaluate_neighbors(index, [2, 8], symbol))
                 or (self.evaluate_neighbors(index, [3, 7], symbol))
                 or (self.evaluate_neighbors(index, [1, 9], symbol))
+                or (self.evaluate_neighbors(index, [4, 6], symbol))
                 else False
             ),
             6: (
@@ -159,6 +182,11 @@ class TicTacToe:
         neighbors: List[int],
         symbol: str,
     ) -> bool:
+        """
+        This is the crux of the tictactoe game. It evaluates if a symbol's
+        neighbors, either horizontally or vertically or diagonally also have
+        the same symbol
+        """
         assert len(neighbors) == 2
         return (
             True
@@ -166,8 +194,3 @@ class TicTacToe:
             and (self.updated_grid[neighbors[1]] == symbol)
             else False
         )
-
-    """
-    def __del__(self):
-        del self.logger
-    """
