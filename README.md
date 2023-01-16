@@ -24,12 +24,12 @@ tree
 ```
 
 # Development Environment
-This project uses 
+This project uses
 - [poetry](https://python-poetry.org/)
 - [pyenv](https://github.com/pyenv/pyenv)
 - [python](https://www.python.org/) version greater than `3.8.1`
 
-to manage dependencies and create a virtual environment. 
+to manage dependencies and create a virtual environment.
 
 # Testing
 To run this program, type `python main.py` in the terminal.

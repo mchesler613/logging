@@ -2,7 +2,7 @@ import random
 from logger import Logger
 
 
-class Busybody():
+class Busybody:
     source_questions = [
         "What is your name?",
         "How old are you?",
@@ -15,7 +15,7 @@ class Busybody():
         "Where do you work?",
         "What is your favorite sport?",
     ]
-    quit_prompt = 'Type q to quit:'
+    quit_prompt = "Type q to quit:"
 
     def __init__(self, name):
         self.name = name
@@ -27,12 +27,10 @@ class Busybody():
     def run(self):
         self.questions = self.source_questions.copy()
         answer = None
-        while answer != 'q' and len(self.questions):
+        while answer != "q" and len(self.questions):
             # log random question
             random_question = random.choice(self.questions)
-            formatted_question = (
-                f"{self.quit_prompt} {random_question} "
-            )
+            formatted_question = f"{self.quit_prompt} {random_question} "
             self.logger.info(formatted_question)
 
             # ask question, log answer
@@ -43,5 +41,5 @@ class Busybody():
             self.questions.remove(random_question)
 
         if not len(self.questions):
-            print('No more questions...')
-        print('All done!')
+            print("No more questions...")
+        print("All done!")
