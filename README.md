@@ -1,8 +1,8 @@
 # Sample Logging Project
 
-The standard Python [logging](https://docs.python.org/3/library/logging.html) library is used widely to log various types of information in python programs for logging errors, debugging and displaying warning messages.
+The standard Python [logging](https://docs.python.org/3/library/logging.html) library is used widely in python programs for logging errors, displaying warning messages and debugging.
 
-This simple demo shows how I use this library, instead of reinventing the wheel, to log information from a running program in a file with a custom name, location, and format.
+This simple demo shows how I use this library, instead of reinventing the wheel, to log information in a file with a custom name, location, and format from a running program.
 
 A simple Q&A game, which I named `busybody`, is instantiated and run in `main.py`.  A random set of questions is posed and answers collected and logged. Each time the game is run, the log file is overwritten.
 
