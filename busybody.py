@@ -21,13 +21,6 @@ class Busybody():
         self.name = name
         self.logger = Logger(name).logger
 
-    def __del__(self):
-        # destroy logger
-        print(f"{self}.__del__")
-        handlers = self.logger.handlers[:]
-        print('handlers', len(handlers))
-        del self.logger
-
     def __str__(self):
         return f"Busybody.{self.name}"
 
