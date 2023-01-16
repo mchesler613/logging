@@ -20,7 +20,6 @@ class Busybody():
     def __init__(self, name):
         self.name = name
         self.logger = Logger(name).logger
-        self.questions = self.source_questions.copy()
 
     def __del__(self):
         # destroy logger
@@ -33,6 +32,7 @@ class Busybody():
         return f"Busybody.{self.name}"
 
     def run(self):
+        self.questions = self.source_questions.copy()
         answer = None
         while answer != 'q' and len(self.questions):
             # log random question

@@ -16,8 +16,8 @@ class Logger:
         file_handler.setFormatter(formatter)
         self.logger.addHandler(file_handler)
 
-        print(f"{self}.__init__")
-        print(self.logger)
+        # print(f"{self}.__init__")
+        # print(self.logger)
 
     def __str__(self):
         return f"Logger.{self.name}"
