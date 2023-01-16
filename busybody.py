@@ -2,8 +2,8 @@ import random
 from logger import Logger
 
 
-class Game:
-    questions = [
+class Busybody():
+    source_questions = [
         "What is your name?",
         "How old are you?",
         "Where do you live?",
@@ -20,6 +20,17 @@ class Game:
     def __init__(self, name):
         self.name = name
         self.logger = Logger(name).logger
+        self.questions = self.source_questions.copy()
+
+    def __del__(self):
+        # destroy logger
+        print(f"{self}.__del__")
+        handlers = self.logger.handlers[:]
+        print('handlers', len(handlers))
+        del self.logger
+
+    def __str__(self):
+        return f"Busybody.{self.name}"
 
     def run(self):
         answer = None

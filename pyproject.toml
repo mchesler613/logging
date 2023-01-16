@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8.1"
 flake8 = "6.0.0"
 isort = "5.11.4"
 pre-commit = "2.21.0"
