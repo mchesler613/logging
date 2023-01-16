@@ -90,105 +90,68 @@ class TicTacToe:
         """
         Does this position have two neighbors with same symbol?
         """
-        if index == 1:
-            # evaluate 2 and 3
-            # evaluate 4 and 5
-            # evaluate 5 and 9
-            return (
+        evaluations = {
+            1: (
                 True
                 if (self.evaluate_neighbors(index, [2, 3], symbol))
                 or (self.evaluate_neighbors(index, [4, 5], symbol))
                 or (self.evaluate_neighbors(index, [5, 9], symbol))
                 else False
-            )
-
-        if index == 2:
-            # evaluate 1 and 3
-            # evaluate 5 and 8
-            return (
+            ),
+            2: (
                 True
                 if (self.evaluate_neighbors(index, [1, 3], symbol))
                 or (self.evaluate_neighbors(index, [5, 8], symbol))
                 else False
-            )
-
-        if index == 3:
-            # evaluate 1 and 2
-            # evaluate 5 and 7
-            # evaluate 6 and 9
-            return (
+            ),
+            3: (
                 True
                 if (self.evaluate_neighbors(index, [1, 2], symbol))
                 or (self.evaluate_neighbors(index, [5, 7], symbol))
                 or (self.evaluate_neighbors(index, [6, 9], symbol))
                 else False
-            )
-
-        if index == 4:
-            # evaluate 1 and 7
-            # evaluate 5 and 6
-            return (
+            ),
+            4: (
                 True
                 if (self.evaluate_neighbors(index, [1, 7], symbol))
                 or (self.evaluate_neighbors(index, [5, 6], symbol))
                 else False
-            )
-
-        if index == 5:
-            # evaluate 1 and 9
-            # evaluate 2 and 8
-            # evaluate 3 and 7
-            return (
+            ),
+            5: (
                 True
                 if (self.evaluate_neighbors(index, [2, 8], symbol))
                 or (self.evaluate_neighbors(index, [3, 7], symbol))
                 or (self.evaluate_neighbors(index, [1, 9], symbol))
                 else False
-            )
-
-        if index == 6:
-            # evaluate 3 and 9
-            # evaluate 4 and 5
-            return (
+            ),
+            6: (
                 True
                 if (self.evaluate_neighbors(index, [3, 9], symbol))
                 or (self.evaluate_neighbors(index, [4, 5], symbol))
                 else False
-            )
-
-        if index == 7:
-            # evaluate 1 and 4
-            # evaluate 3 and 5
-            # evaluate 8 and 9
-            return (
+            ),
+            7: (
                 True
                 if (self.evaluate_neighbors(index, [1, 4], symbol))
                 or (self.evaluate_neighbors(index, [3, 5], symbol))
                 or (self.evaluate_neighbors(index, [8, 9], symbol))
                 else False
-            )
-
-        if index == 8:
-            # evaluate 2 and 5
-            # evaluate 7 and 9
-            return (
+            ),
+            8: (
                 True
                 if (self.evaluate_neighbors(index, [2, 5], symbol))
                 or (self.evaluate_neighbors(index, [7, 9], symbol))
                 else False
-            )
-
-        if index == 9:
-            # evaluate 1 and 5
-            # evaluate 3 and 6
-            # evaluate 7 and 8
-            return (
+            ),
+            9: (
                 True
                 if (self.evaluate_neighbors(index, [1, 5], symbol))
                 or (self.evaluate_neighbors(index, [3, 6], symbol))
                 or (self.evaluate_neighbors(index, [7, 8], symbol))
                 else False
-            )
+            ),
+        }
+        return evaluations[index]
 
     def evaluate_neighbors(
         self,

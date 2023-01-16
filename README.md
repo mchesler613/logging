@@ -27,9 +27,13 @@ tree
 This project uses
 - [poetry](https://python-poetry.org/)
 - [pyenv](https://github.com/pyenv/pyenv)
-- [python](https://www.python.org/) version greater than `3.8.1`
+- [python](https://www.python.org/) version >= `3.8.1`
+- [pre-commit](https://pre-commit.com/)
+- [isort](https://pycqa.github.io/isort/)
+- [black](https://github.com/psf/black)
+- [flake8](https://flake8.pycqa.org/)
 
-to manage dependencies and create a virtual environment.
+to manage dependencies, create a virtual environment, and organize, format and beautify code.
 
 # Testing
 To run this program, type `python main.py` in the terminal.
