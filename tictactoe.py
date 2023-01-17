@@ -20,7 +20,7 @@ class TicTacToe:
 
     def __init__(self, name: str) -> None:
         self.name = name
-        self.logger = Logger(name).logger
+        self.logger = Logger(name)
 
     def reset(self):
         self.updated_grid = self.grid.copy()
@@ -42,12 +42,12 @@ class TicTacToe:
                 f"{self.updated_grid[index+2]}"
             )
             print(row_values)
-            self.logger.info(row_values)
+            self.logger.log(row_values)
             index += 3
-        self.logger.info("")
+        self.logger.log("")
         if message:
             print(message)
-            self.logger.info(message)
+            self.logger.log(message)
 
     def run(self):
         """
@@ -59,7 +59,7 @@ class TicTacToe:
         instruction = "Enter a number:"
         while answer != "q":
             self.display()
-            self.logger.info(f"You are {self.player_symbol}")
+            self.logger.log(f"You are {self.player_symbol}")
 
             formatted_question = f"{self.quit_prompt} or {instruction} "
 
@@ -78,8 +78,6 @@ class TicTacToe:
                 # did the player win?
                 if self.three_in_a_row(index, self.player_symbol):
                     self.display(self.you_win_msg)
-                    # print(self.you_win_msg)
-                    # self.logger.info(self.you_win_msg)
                     break
                 self.available_indices.remove(index)
 
@@ -93,8 +91,6 @@ class TicTacToe:
                     # did the computer win?
                     if self.three_in_a_row(game_index, self.game_symbol):
                         self.display(self.i_win_msg)
-                        # print(self.i_win_msg)
-                        # self.logger.info(self.i_win_msg)
                         break
                     self.available_indices.remove(game_index)
                 else:

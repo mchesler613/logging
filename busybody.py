@@ -19,7 +19,7 @@ class Busybody:
 
     def __init__(self, name):
         self.name = name
-        self.logger = Logger(name).logger
+        self.logger = Logger(name)
 
     def __str__(self):
         return f"Busybody.{self.name}"
@@ -31,11 +31,11 @@ class Busybody:
             # log random question
             random_question = random.choice(self.questions)
             formatted_question = f"{self.quit_prompt} {random_question} "
-            self.logger.info(formatted_question)
+            self.logger.log(formatted_question)
 
             # ask question, log answer
             answer = input(formatted_question)
-            self.logger.info(answer)
+            self.logger.log(answer)
 
             # remove question from list
             self.questions.remove(random_question)
