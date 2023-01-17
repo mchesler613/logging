@@ -22,6 +22,12 @@ class TicTacToe:
         self.name = name
         self.logger = Logger(name)
 
+    def log(self, message: str) -> None:
+        """
+        Wrapper function for self.logger.log
+        """
+        self.logger.log(message)
+
     def reset(self):
         self.updated_grid = self.grid.copy()
         self.available_indices = [x for x in range(1, 10)]
@@ -42,12 +48,12 @@ class TicTacToe:
                 f"{self.updated_grid[index+2]}"
             )
             print(row_values)
-            self.logger.log(row_values)
+            self.log(row_values)
             index += 3
-        self.logger.log("")
+        self.log("")
         if message:
             print(message)
-            self.logger.log(message)
+            self.log(message)
 
     def run(self):
         """
@@ -59,7 +65,7 @@ class TicTacToe:
         instruction = "Enter a number:"
         while answer != "q":
             self.display()
-            self.logger.log(f"You are {self.player_symbol}")
+            self.log(f"You are {self.player_symbol}")
 
             formatted_question = f"{self.quit_prompt} or {instruction} "
 

@@ -21,6 +21,12 @@ class Busybody:
         self.name = name
         self.logger = Logger(name)
 
+    def log(self, message: str) -> None:
+        """
+        Wrapper function for self.logger.log
+        """
+        self.logger.log(message)
+
     def __str__(self):
         return f"Busybody.{self.name}"
 
@@ -31,11 +37,11 @@ class Busybody:
             # log random question
             random_question = random.choice(self.questions)
             formatted_question = f"{self.quit_prompt} {random_question} "
-            self.logger.log(formatted_question)
+            self.log(formatted_question)
 
             # ask question, log answer
             answer = input(formatted_question)
-            self.logger.log(answer)
+            self.log(answer)
 
             # remove question from list
             self.questions.remove(random_question)
