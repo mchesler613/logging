@@ -11,20 +11,23 @@ class Logger:
     def __init__(self, name: str) -> None:
         self.name = name
 
-        # retrieve the parent logger
+        # retrieve a child logger from the logging library
         self.logger = logging.getLogger(f"{__name__}.{name}")
 
         # set log level to INFO only
         self.logger.setLevel(logging.INFO)
 
-        # create a separate file handler for this instance with overwrite mode
+        # create a file handler with overwrite mode
         file_handler = logging.FileHandler(f"logs/{name}.log", mode="w")
 
-        # add file handler to root logger
+        # associate file handler to child logger
         self.logger.addHandler(file_handler)
 
     def __str__(self):
         return f"Logger.{self.name}"
 
     def log(self, message: str) -> None:
+        """
+        A convenient method for clients to use to log a raw message
+        """
         self.logger.info(message)

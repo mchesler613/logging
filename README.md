@@ -172,3 +172,7 @@ x 8 o
 
 You won!
 ```
+
+# Tutorial
+
+Follow my [tutorial on Medium](https://merilynchesler.medium.com/python-adventures-logging-b4b8aa7cfb94) for this topic.
